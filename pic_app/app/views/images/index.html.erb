@@ -1,0 +1,45 @@
+<!--table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @images.each do |image| %>
+      <tr>
+        <td><%= image.title %></td>
+        <td><%= image_tag image.picture.url(:medium) %></td>
+        <td><%= link_to 'Show', image %></td>
+        <td><%= link_to 'Edit', edit_image_path(image) %></td>
+        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br-->
+<div class="ui center aligned segment">
+  <h1 class="ui red header">Listing Images</h1>
+  <div class="ui red segment">
+    <div class="ui five column grid">
+      <% @images.each do |image| %>
+        <div class="column">
+          <div class="ui black card" >
+            <%= image_tag image.picture.url(:medium), class: "ui medium image", style:"height: 200px;" %>
+            <div class="ui bottom left attached label"><%= image.title %></div>
+            <%= link_to 'Delete', image, method: :delete, data: { confirm: 'Are you sure?' }, class: "ui bottom right attached red label" %>
+          </div>
+        </div>
+      <% end %>
+      <div class="column">
+          <div class="ui fluid black card">
+            <a href="<%=new_image_path%>">
+              <i class="green plus icon" style="height: 200px; font-size: 13em"></i>
+            </a>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
